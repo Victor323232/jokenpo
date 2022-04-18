@@ -38,6 +38,25 @@ class _jogoState extends State<jogo> {
         });
         break;
     }
+    //Validação do Vencedor
+    // app ganhador
+    if( (escolhaApp == "pedra" && escolhaUsuario == "tesoura") ||
+      (escolhaApp == "papel" && escolhaUsuario == "pedra") ||
+      (escolhaApp == "tesoura" && escolhaUsuario == "papel")
+    ) {
+      setState(() {
+        this._mensagem="Deu Ruim! Voce Perdeu" ;
+      });
+    //usuario ganhador
+    }else if(
+    (escolhaUsuario == "pedra" && escolhaApp == "tesoura") ||
+        (escolhaUsuario == "papel" && escolhaApp == "pedra") ||
+        (escolhaUsuario == "tesoura" && escolhaApp == "papel")
+    ){
+      this._mensagem = "Parabéns! Voce ganhou";
+    }else {
+      this._mensagem="Caranbolas! Deu empate";
+    }
   }
   @override
   Widget build(BuildContext context) {
